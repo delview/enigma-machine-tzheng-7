@@ -49,7 +49,6 @@ def encrypt(og_string):
             changed_string.append(char_to_morse[char]) # Change to morse code according to idx
         else: # If char is punctuation
             changed_string.append('') # Ignore it
-
     print("\nEncrypted message:") # Display encrypted msg
     print(" ".join(changed_string)) # Present final encrypted/decrypted string to user
     print("\n")
@@ -58,6 +57,14 @@ def decrypt(og_string):
     '''
     Decrypts user's string
     '''
+    for morse in og_string:
+        if morse in morse_to_char: # If char is morse code
+            changed_string.append(morse_to_char[morse]) # Change to alphabet according to idx
+        else: # If char is punctuation
+            changed_string.append('') # Ignore it
+    print("\nEncrypted message:") # Display encrypted msg
+    print(" ".join(changed_string)) # Present final encrypted/decrypted string to user
+    print("\n")
 
 # - User must be able to copy output & run through program again to perfectly encrypt/decrypt multiple times without mistakes - test this
 
