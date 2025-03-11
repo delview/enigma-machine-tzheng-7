@@ -7,14 +7,6 @@ char_to_morse = {char: morse for char, morse in zip(alphabet, morse_code)}
 
 morse_to_char = {morse: char for morse, char in zip(morse_code, alphabet)}
 
-# Create empty list to store encrypted/decrypted string
-
-# - 8 commits
-
-# - Use .strip()
-
-# - Use functions whenever you can (eg. a function to encrypt, a function to decrypt, a function to format the string)
-
 # Functions can either output directly or return the string to where it was called (eg. your formatting function could call for decrypting and then it gets returned to the formatting function so that it can be formatted nicely)
 
 # Use string formatting
@@ -40,13 +32,16 @@ def format(changed_string):
     '''
     Formats changed string properly
     '''
+    if not changed_string:  # Check if the string is empty
+        return changed_string  # Return the empty string as is
+    return changed_string[0].upper() + changed_string[1:].lower()
 
 # Create 2 functions that'll accept parameters in the form of list/dictionary that will contain string to be encrypted/decrypted. One will encrypt, other will decrypt using chosen cipher technique. This should involve loops & if statements
 def encrypt(og_string):
     '''
     Encrypts user's string & outputs it
     '''
-    changed_string = []
+    changed_string = [] # Create empty list to store encrypted/decrypted string
     for char in og_string:
         if char in char_to_morse: # If char is letter
             changed_string.append(char_to_morse[char]) # Change to morse code according to idx
@@ -60,7 +55,7 @@ def decrypt(og_string):
     '''
     Decrypts user's string
     '''
-    changed_string = []
+    changed_string = [] # Create empty list to store encrypted/decrypted string
     for morse in og_string:
         if morse in morse_to_char: # If char is morse code
             changed_string.append(morse_to_char[morse]) # Change to alphabet according to idx
@@ -69,8 +64,6 @@ def decrypt(og_string):
 
     final_output = format("".join(changed_string))
     print(f"\nEncrypted message: {final_output}\n") # Display encrypted msg
-
-# - User must be able to copy output & run through program again to perfectly encrypt/decrypt multiple times without mistakes - test this
 
 # Run program
 print("\nHello! Hope you're having a great day <3") # Greet user before calling functions so it's not looped if input is invalid
